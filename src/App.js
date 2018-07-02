@@ -4,14 +4,14 @@ import './App.css'
 import { Provider } from 'react-redux'
 import store from './store'
 
-import Counter from './components/Counter'
+import Chat from './components/Chat'
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
         <div className="App">
-          <Counter />
+          <Chat />
         </div>
       </Provider>
     );
