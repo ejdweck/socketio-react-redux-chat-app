@@ -1,0 +1,11 @@
+#chatroom-container {
+  background-color: lightsalmon;
+  width: 90%;
+  height: 500px;
+  overflow-y: scroll;
+}
+
+#handle, #message {
+  width: 50%;
+  margin: 0 auto;
+}
