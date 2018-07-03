@@ -2,6 +2,7 @@
 export const INCREMENT_COUNTER = 'INCREMENT_COUNTER'
 
 // chat reducer
+export const SEND_MESSAGE = 'SEND_MESSAGE'
 export const ADD_MESSAGE = 'ADD_MESSAGE'
 
 // socket reducer

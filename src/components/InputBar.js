@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { addMessage } from '../actions/actions'
+import { sendMessage } from '../actions/actions'
 
 import { Button, Input } from 'semantic-ui-react'
 
@@ -19,7 +19,7 @@ class InputBar extends Component {
     const userInput = this.state.input
     console.log('userInput: ', userInput)
     // send message text to middle ware for socket handling
-    this.props.addMessage(userInput)
+    this.props.sendMessage(userInput)
     this.setState({
       input: ''
     })
@@ -53,11 +53,11 @@ class InputBar extends Component {
 }
 
 InputBar.propTypes = {
-  addMessage: PropTypes.func.isRequired,
+  sendMessage: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
   inputbar: state.inputbar
 })
 
-export default connect(mapStateToProps, { addMessage }) (InputBar)
+export default connect(mapStateToProps, { sendMessage }) (InputBar)

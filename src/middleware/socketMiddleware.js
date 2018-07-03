@@ -1,10 +1,21 @@
-import { OPEN_WEBSOCKET, UPDATE_SOCKET_OBJECT } from '../actions/types'
+import { OPEN_WEBSOCKET, UPDATE_SOCKET_OBJECT, ADD_MESSAGE } from '../actions/types'
 import { openWebsocket } from '../actions/actions'
 import io from 'socket.io-client'
 
 
 const handleServerMessage = (data, store, clientId) => {
   console.log('data ', data)
+
+  // package into a variable server message data
+  const response = {
+    message: data.message,
+    handle: data.handle
+  }
+  // dispatch action that adds new message to the state array
+  store.dispatch({
+    type: ADD_MESSAGE,
+    payload: response
+  })
 }
 
 const socketMiddleware = store => next => action => {

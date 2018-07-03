@@ -1,5 +1,6 @@
 import {
   INCREMENT_COUNTER,
+  SEND_MESSAGE,
   ADD_MESSAGE,
   OPEN_WEBSOCKET,
   UPDATE_SOCKET_OBJECT
@@ -14,6 +15,13 @@ export const incrementCounter = () => dispatch => {
 }
 
 // chat reducer
+export const sendMessage = (data) => dispatch => {
+  dispatch({
+    type: SEND_MESSAGE,
+    payload: data
+  })
+}
+
 export const addMessage = (data) => dispatch => {
   dispatch({
     type: ADD_MESSAGE,

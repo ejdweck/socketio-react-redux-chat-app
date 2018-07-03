@@ -11,7 +11,7 @@ import InputBar from './InputBar'
 
 import { openWebsocket} from '../actions/actions'
 
-import { List, Image, Message } from 'semantic-ui-react'
+import { List, Image, Message, Item } from 'semantic-ui-react'
 
 
 class Chat extends Component {
@@ -25,15 +25,16 @@ class Chat extends Component {
       <div>
         <h1>Chat Interface</h1>
         <div id="chatroom-container">
-          <List>
+          <Item.Group relaxed>
             {
               this.props.chat.messages.map((message, i) =>
-                <Message
-                  header='test'
-                  content={this.props.chat.messages[i]}
-                />)
+              <Item>
+                <Item.Image size='tiny' src='src/images/image.png' />
+                <Item.Content verticalAlign='middle'>{this.props.chat.messages[i]}</Item.Content>
+              </Item>)
             }
-          </List>
+          </Item.Group>
+
         </div>
         <div id="chatroom-input">
           <InputBar />
@@ -42,6 +43,18 @@ class Chat extends Component {
     )
   }
 }
+
+/*
+<List>
+  {
+    this.props.chat.messages.map((message, i) =>
+      <Message
+        header='test'
+        content={this.props.chat.messages[i]}
+      />)
+  }
+</List>
+*/
 
 Chat.propTypes = {
   openWebsocket: PropTypes.func.isRequired,
