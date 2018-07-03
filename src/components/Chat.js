@@ -12,7 +12,7 @@ import InputBar from './InputBar'
 import { openWebsocket} from '../actions/actions'
 
 import { List, Image, Message, Item, Grid } from 'semantic-ui-react'
-
+import logo from '../images/blazers-horizontal.png'
 
 class Chat extends Component {
 
@@ -30,10 +30,11 @@ class Chat extends Component {
       <div>
         <Grid celled padded id='chat-grid'>
           <Grid.Row columns={1} id='chatroom-title'>
+            <Image src={logo}/>
           </Grid.Row>
           <Grid.Row columns={1} id='chatroom-messages-list'>
             <Grid.Column width={16}>
-              <Item.Group divided>
+              <Item.Group relaxed>
                 {
                   this.props.chat.messages.map((message, i) =>
                   <Item key={i} verticalAlign='top' >
