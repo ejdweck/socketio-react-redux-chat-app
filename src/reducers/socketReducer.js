@@ -1,6 +1,7 @@
 import { OPEN_WEBSOCKET, UPDATE_SOCKET_OBJECT } from '../actions/types'
 
 const initialState = {
+  clientList: [],
   socket: null,
   socketConnected: false,
 }
@@ -17,7 +18,6 @@ export default function (state = initialState, action) {
         ...state,
         socket: action.payload,
       }
-
     default:
       return state
   }

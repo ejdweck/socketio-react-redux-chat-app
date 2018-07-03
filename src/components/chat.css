@@ -2,17 +2,22 @@
   height: 100vh;
 }
 
+#chatroom-title {
+  height: 20%;
+  background-color: #000000;
+}
+
 #chatroom-messages-list {
-  height: 100%;
-  background-color: salmon;
+  height: 60%;
+  background-color: #C4CED4;
   overflow-y: scroll;
 }
 
-#chatroom-input {
-  margin: 0 auto;
-  width: 500px;
-  background-color: orange;
+#chatroom-input-bar {
+  height: 20%;
+  background-color: #E13A3E;
 }
+
 
 #chat-handle, #chat-message {
   display: flex;

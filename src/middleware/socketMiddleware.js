@@ -2,6 +2,7 @@ import { OPEN_WEBSOCKET, UPDATE_SOCKET_OBJECT, ADD_MESSAGE } from '../actions/ty
 import { openWebsocket } from '../actions/actions'
 import io from 'socket.io-client'
 
+var socket
 
 const handleServerMessage = (data, store, clientId) => {
   console.log('data ', data)
@@ -20,7 +21,7 @@ const handleServerMessage = (data, store, clientId) => {
 
 const socketMiddleware = store => next => action => {
   if(action.type === OPEN_WEBSOCKET) {
-    var socket = io('localhost:8080')
+    socket = io('localhost:8080')
     socket.on('connect', function(){
       console.log('connected to server', socket)
     })
@@ -31,6 +32,10 @@ const socketMiddleware = store => next => action => {
       type: UPDATE_SOCKET_OBJECT,
       payload: socket,
     })
+  }
+
+  if (action.type === UPDATE_SOCKET_OBJECT) {
+
   }
 
   next(action)

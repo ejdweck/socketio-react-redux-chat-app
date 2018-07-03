@@ -20,10 +20,17 @@ class Chat extends Component {
     this.props.openWebsocket('localhost:8080')
   }
 
+  componentDidUpdate() {
+    var elem = document.getElementById('chatroom-messages-list');
+    elem.scrollTop = elem.scrollHeight;
+  }
+
   render() {
     return (
       <div>
         <Grid celled padded id='chat-grid'>
+          <Grid.Row columns={1} id='chatroom-title'>
+          </Grid.Row>
           <Grid.Row columns={1} id='chatroom-messages-list'>
             <Grid.Column width={16}>
               <Item.Group divided>
@@ -43,7 +50,7 @@ class Chat extends Component {
               </Item.Group>
             </Grid.Column>
           </Grid.Row>
-          <Grid.Row columns={1}>
+          <Grid.Row columns={1} id='chatroom-input-bar'>
             <Grid.Column >
               <InputBar />
             </Grid.Column>
