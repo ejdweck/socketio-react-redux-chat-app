@@ -11,7 +11,7 @@ import InputBar from './InputBar'
 
 import { openWebsocket} from '../actions/actions'
 
-import { List, Image, Message, Item } from 'semantic-ui-react'
+import { List, Image, Message, Item, Grid } from 'semantic-ui-react'
 
 
 class Chat extends Component {
@@ -23,28 +23,32 @@ class Chat extends Component {
   render() {
     return (
       <div>
-        <h1>Chat Interface</h1>
-        <div id="chatroom-container">
-          <Item.Group divided>
-            {
-              this.props.chat.messages.map((message, i) =>
-              <Item key={i} verticalAlign='top' >
-                <Item.Content>
-                  <Item.Header id='chat-handle'>
-                    {this.props.chat.messages[i].handle}
-                  </Item.Header>
-                  <Item.Description id='chat-message'>
-                    {this.props.chat.messages[i].message}
-                  </Item.Description>
-                </Item.Content>
-              </Item>)
-            }
-          </Item.Group>
-
-        </div>
-        <div id="chatroom-input">
-          <InputBar />
-        </div>
+        <Grid celled padded id='chat-grid'>
+          <Grid.Row columns={1} id='chatroom-messages-list'>
+            <Grid.Column width={16}>
+              <Item.Group divided>
+                {
+                  this.props.chat.messages.map((message, i) =>
+                  <Item key={i} verticalAlign='top' >
+                    <Item.Content>
+                      <Item.Header id='chat-handle'>
+                        {this.props.chat.messages[i].handle}
+                      </Item.Header>
+                      <Item.Description id='chat-message'>
+                        {this.props.chat.messages[i].message}
+                      </Item.Description>
+                    </Item.Content>
+                  </Item>)
+                }
+              </Item.Group>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row columns={1}>
+            <Grid.Column >
+              <InputBar />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </div>
     )
   }

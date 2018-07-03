@@ -1,6 +1,9 @@
-#chatroom-container {
-  margin: 0 auto;
-  height: 500px;
+#chat-grid {
+  height: 100vh;
+}
+
+#chatroom-messages-list {
+  height: 100%;
   background-color: salmon;
   overflow-y: scroll;
 }
