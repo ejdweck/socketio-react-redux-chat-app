@@ -25,12 +25,18 @@ class Chat extends Component {
       <div>
         <h1>Chat Interface</h1>
         <div id="chatroom-container">
-          <Item.Group relaxed>
+          <Item.Group divided>
             {
               this.props.chat.messages.map((message, i) =>
-              <Item>
-                <Item.Image size='tiny' src='src/images/image.png' />
-                <Item.Content verticalAlign='middle'>{this.props.chat.messages[i]}</Item.Content>
+              <Item key={i} verticalAlign='top' >
+                <Item.Content>
+                  <Item.Header id='chat-handle'>
+                    {this.props.chat.messages[i].handle}
+                  </Item.Header>
+                  <Item.Description id='chat-message'>
+                    {this.props.chat.messages[i].message}
+                  </Item.Description>
+                </Item.Content>
               </Item>)
             }
           </Item.Group>
@@ -43,18 +49,6 @@ class Chat extends Component {
     )
   }
 }
-
-/*
-<List>
-  {
-    this.props.chat.messages.map((message, i) =>
-      <Message
-        header='test'
-        content={this.props.chat.messages[i]}
-      />)
-  }
-</List>
-*/
 
 Chat.propTypes = {
   openWebsocket: PropTypes.func.isRequired,

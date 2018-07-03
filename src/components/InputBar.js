@@ -11,15 +11,30 @@ class InputBar extends Component {
     super(props)
     this.state = {
       input: '',
+      handle: '',
     }
   }
 
   handleSubmit = () => {
-    // submit text to dialogflow
+    // if the user hasn't entered a chatroom handle, prompt them
+    if (this.state.handle === "") {
+      alert('please enter a handle')
+      return
+    }
+    // if the user hasn't entered a text message, prompt them
+    if (this.state.input === "") {
+      alert('please enter a message')
+      return
+    }
     const userInput = this.state.input
+    const user = this.state.handle
     console.log('userInput: ', userInput)
     // send message text to middle ware for socket handling
-    this.props.sendMessage(userInput)
+    var data = {
+      handle: user,
+      message: userInput,
+    }
+    this.props.sendMessage(data)
     this.setState({
       input: ''
     })
@@ -29,6 +44,12 @@ class InputBar extends Component {
     this.setState({
       input: evt.target.value
     });
+  }
+
+  updateHandleValue = (evt) => {
+    this.setState({
+      handle: evt.target.value
+    })
   }
 
   onKeyPress = (e) => {
@@ -42,11 +63,18 @@ class InputBar extends Component {
     return (
       <div>
         <Input
+          fluid={true}
+          placeholder='chatroom handle'
+          onChange={evt => this.updateHandleValue(evt)}
+        />
+        <Input
+            fluid={true}
+            placeholder='message'
             value={this.state.input}
             onChange={evt => this.updateInputValue(evt)}
             onKeyPress={this.onKeyPress}
-          />
-          <Button content="Send" onClick={this.handleSubmit} />
+        />
+          <Button id='submit-btn' content="Send" onClick={this.handleSubmit} />
       </div>
     )
   }

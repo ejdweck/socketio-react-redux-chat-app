@@ -1,11 +1,17 @@
 #chatroom-container {
+  margin: 0 auto;
   height: 500px;
-  width: 500px;
-  background-color: grey;
+  background-color: salmon;
   overflow-y: scroll;
 }
 
-#handle, #message {
-  width: 50%;
+#chatroom-input {
   margin: 0 auto;
+  width: 500px;
+  background-color: orange;
+}
+
+#chat-handle, #chat-message {
+  display: flex;
+  text-align: left;
 }

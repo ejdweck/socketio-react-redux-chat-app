@@ -9,8 +9,8 @@ const chatMiddleware = store => next => action => {
     const socket = state.socket.socket
     //console.log('socket from add message middleware', socket)
     socket.emit('chat', {
-      message: action.payload,
-      handle: 'TODO',
+      message: action.payload.message,
+      handle: action.payload.handle,
     })
   }
   if (action.type === ADD_MESSAGE) {
