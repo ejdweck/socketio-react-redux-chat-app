@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { addMessage } from '../actions/actions'
 
-import { InputGroup, Input, InputGroupAddon, Button, } from 'reactstrap'
+import { Button, Input } from 'semantic-ui-react'
+
 import './inputbar.css'
 class InputBar extends Component {
   constructor(props) {
@@ -40,16 +41,12 @@ class InputBar extends Component {
   render () {
     return (
       <div>
-        <InputGroup id='inputbar'>
         <Input
             value={this.state.input}
             onChange={evt => this.updateInputValue(evt)}
             onKeyPress={this.onKeyPress}
           />
-          <InputGroupAddon addonType="append">
-            <Button color="secondary" onClick={this.handleSubmit}>Send</Button>
-          </InputGroupAddon>
-        </InputGroup>
+          <Button content="Send" onClick={this.handleSubmit} />
       </div>
     )
   }

@@ -5,16 +5,13 @@ import { connect } from 'react-redux'
 import './chat.css'
 import io from 'socket.io-client'
 
-// chat ui component from react-chat-ui
-import { ChatFeed, Message } from 'react-chat-ui'
-
-// reactstrap components
-import { Button, Container, Row, Col, Input } from 'reactstrap'
 
 // user input component
 import InputBar from './InputBar'
 
 import { openWebsocket} from '../actions/actions'
+
+import { List, Image, Message } from 'semantic-ui-react'
 
 
 class Chat extends Component {
@@ -27,12 +24,20 @@ class Chat extends Component {
     return (
       <div>
         <h1>Chat Interface</h1>
-        <Container id="chatroom-container">
-          
-        </Container>
-        <Container id="chatroom-input">
+        <div id="chatroom-container">
+          <List>
+            {
+              this.props.chat.messages.map((message, i) =>
+                <Message
+                  header='test'
+                  content={this.props.chat.messages[i]}
+                />)
+            }
+          </List>
+        </div>
+        <div id="chatroom-input">
           <InputBar />
-        </Container>
+        </div>
       </div>
     )
   }

@@ -1,7 +1,7 @@
 import { ADD_MESSAGE } from '../actions/types'
 
 const initialState = {
-  messages: [],
+  messages: ['test', 'test2', 'test3'],
 }
 
 export default function (state = initialState, action) {
